@@ -1,3 +1,3 @@
 #!/bin/sh
 
-build -t logstash .
+docker build -t logstash .
