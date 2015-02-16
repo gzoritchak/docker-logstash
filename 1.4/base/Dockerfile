@@ -15,9 +15,8 @@ RUN /opt/logstash/bin/plugin install contrib
 ADD app /app
 ADD conf.d /opt/logstash/conf.d/
 
-RUN echo `cat /opt/logstash/vendor/kibana/config.js`
-RUN sed -i -e "s/127.0.0.1:9200/logs-es.moncoachfinance.com/g" /opt/logstash/vendor/kibana/config.js
-RUN echo `cat /opt/logstash/vendor/kibana/config.js`
+RUN sed -i -e "s/http.+9200/http:\/\/logs-es.moncoachfinance.com/g" /opt/logstash/vendor/kibana/config.js
+RUN cat /opt/logstash/vendor/kibana/config.js
 
 # Kibana
 EXPOSE 9292
