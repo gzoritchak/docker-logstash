@@ -15,7 +15,7 @@ RUN /opt/logstash/bin/plugin install contrib
 ADD app /app
 ADD conf.d /opt/logstash/conf.d/
 
-RUN sed -i -e "s@http://.*,@http://logs-es.moncoachfinance.com@g" /opt/logstash/vendor/kibana/config.js
+RUN sed -i -e 's@"http://.*",@"http://logs-es.moncoachfinance.com",@g' /opt/logstash/vendor/kibana/config.js
 RUN cat /opt/logstash/vendor/kibana/config.js
 
 # Kibana
