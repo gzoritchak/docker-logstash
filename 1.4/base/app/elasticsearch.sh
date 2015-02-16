@@ -47,6 +47,7 @@ function es_script_disable_dynamic() {
 ---
 script.disable_dynamic: true
 EOF
+    cat "$config_file"
     fi
 }
 

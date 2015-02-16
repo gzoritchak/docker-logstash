@@ -1,5 +1,4 @@
 FROM java:7-jre
-MAINTAINER P. Barrett Little <barrett@barrettlittle.com>
 
 # Download version 1.4.2 of logstash
 RUN cd /tmp && \
@@ -12,11 +11,14 @@ RUN cd /tmp && \
 RUN /opt/logstash/bin/plugin install contrib
 
 # Copy build files to container root
-RUN mkdir /app
-ADD . /app
+#RUN mkdir /app
+ADD app /app
+ADD conf.d /opt/logstash/conf.d/
+
 
 # Kibana
 EXPOSE 9292
+EXPOSE 9200
 
 # Start logstash
-ENTRYPOINT ["/app/bin/boot"]
+ENTRYPOINT ["/app/boot"]
